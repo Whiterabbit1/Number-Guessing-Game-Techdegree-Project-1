@@ -1,8 +1,9 @@
 import random
+import os
 numb_of_tries=0
 max_attempts=10
 high_score=[]
-import sys
+
 
 #### MAKES SURE USER INPUTS CORRECT NON NEGATIVE INTEGER BETWEEN 1-10
 def user_input_integer():
@@ -37,12 +38,15 @@ def if_user_wants_more():
     if more_play == "y":
         print("\n NEW GAME !!!\nThe highest score (minimum attempts used) is {}.\n**GOOD LUCK***".format(min(high_score)))
         start_game()
-    elif more_play=="n":
-        print("\n Game finished. Have a great day   ")
-        sys.exit()
+
+    elif print("\nYou must choose either Y(YES) or N(EXIT)"):
+
+      return if_user_wants_more()
     else:
-        print("\nYou must choose either Y(YES) or N(EXIT)")
-        return if_user_wants_more()
+      if more_play=="n":
+
+        print("\n Game finished. Have a great day   ")
+        os._exit(1)
 
 
 ###GAME
@@ -68,5 +72,5 @@ def start_game():
             print("\nCongrats, it took you   {}   tries   ".format(numb_of_tries))
             high_score.append(numb_of_tries)
             if_user_wants_more()
-
-#start_game()
+if __name__ == '__main__':
+  start_game()
